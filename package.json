@@ -1,0 +1,41 @@
+{
+  "name": "chatbot-tg",
+  "version": "1.0.0",
+  "description": "TG Support Bot",
+  "main": "app.ts",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "start": "npm run build:ts && fastify start -l info dist/app.js",
+    "build:ts": "tsc",
+    "watch:ts": "tsc -w",
+    "dev": "npm run build:ts && concurrently -k -p \"[{name}]\" -n \"TypeScript,App\" -c \"yellow.bold,cyan.bold\" \"npm:watch:ts\" \"npm:dev:start\"",
+    "dev:start": "node dist/app.js",
+    "format": "prettier --check --ignore-path .gitignore .",
+    "format:fix": "prettier --write --ignore-path .gitignore ."
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@telegraf/session": "^2.0.0-beta.7",
+    "axios": "^1.7.7",
+    "better-sqlite3": "^9.6.0",
+    "dotenv": "^16.4.5",
+    "kysely": "^0.27.2",
+    "pino": "^9.4.0",
+    "telegraf": "^4.16.3"
+  },
+  "devDependencies": {
+    "@types/better-sqlite3": "^7.6.11",
+    "@types/node": "^22.1.0",
+    "c8": "^10.1.2",
+    "concurrently": "^9.0.0",
+    "fastify-tsconfig": "^2.0.0",
+    "prettier": "^3.3.3",
+    "prettier-plugin-organize-imports": "^4.1.0",
+    "ts-node": "^10.4.0",
+    "typescript": "^5.2.2"
+  }
+}
