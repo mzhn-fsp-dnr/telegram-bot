@@ -7,6 +7,8 @@ import stage from "./scenes";
 
 let tgBot: Telegraf | null = null;
 
+
+
 /** Create Telegraf bot instance */
 export function setup(env: NodeJS.ProcessEnv) {
   const bot = new Telegraf(env.BOT_TOKEN);

@@ -28,7 +28,7 @@ scene.enter(async (ctx) => {
 scene.action(regex, (ctx) => {
   if (!ctx.match[0].startsWith("org")) return;
   ctx.answerCbQuery();
-  const orgId = parseInt(ctx.match[0].split("_")[1], 10);
+  const orgId = ctx.match[0].split("_")[1];
 
   //@ts-ignore
   ctx.session.org = orgId;

@@ -3,6 +3,7 @@ import { button, inlineKeyboard } from "telegraf/markup";
 import { all, Category } from "../../api/services";
 import { _ } from "../../locale";
 import { printStartMessage } from "../actions/base";
+import { NAME as ChooseDayScene } from "./choose-day";
 
 export const NAME = "choose-service";
 const scene = new Scenes.BaseScene(NAME);
@@ -65,7 +66,10 @@ scene.action(regex, async (ctx) => {
   }
 
   if (service?.children.length == 0) {
-    // next
+    // @ts-ignore
+    ctx.session.service = service.id;
+    //@ts-ignore
+    return ctx.scene.enter(ChooseDayScene);
   }
 
   const keyboard = buildKeyboardFor(
