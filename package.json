@@ -7,7 +7,7 @@
     "test": "test"
   },
   "scripts": {
-    "start": "npm run build:ts && node dist/app.js",
+    "start": "npm run build:ts && node dist/src/app.js",
     "build:ts": "tsc",
     "watch:ts": "tsc -w",
     "dev": "npm run build:ts && concurrently -k -p \"[{name}]\" -n \"TypeScript,App\" -c \"yellow.bold,cyan.bold\" \"npm:watch:ts\" \"npm:dev:start\"",
