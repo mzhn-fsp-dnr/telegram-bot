@@ -1,8 +1,10 @@
 import "dotenv/config";
 import * as bot from "./bot";
+import db from "./db";
 import logger from "./util/log";
 
 logger.info("Init phase start");
+db.pragma("journal_mode = WAL");
 
 const env = process.env;
 const tgBot = bot.setup(env);
