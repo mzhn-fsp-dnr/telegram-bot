@@ -1,8 +1,13 @@
 type Locale = Record<string, string>;
 
-const locale: Locale = {
-  message_welcome: "start",
-};
+const locale = {
+  message_welcome:
+    "Добро пожаловать в систему электронного бронирования Почты Донбасса.\n\nЗдесь Вы можете записаться заранее для посещения отделения.",
+  message_not_authorized:
+    "Вы не авторизованы в системе!\n\nДля регистрации в системе электронного бронирования Вам необходимо посетить отделение Почты Донбасса.",
+  message_choose_org: "Выберите организацию",
+  message_choose_service: "Выберите необходимую услугу\n\n%category%",
+} satisfies Locale;
 type AvailableLocaleKeys = keyof typeof locale;
 
 /** Get localized string by translation key */
