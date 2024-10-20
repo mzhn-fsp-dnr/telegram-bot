@@ -7,6 +7,7 @@ export interface Category {
   children: Category[];
 }
 
-export async function all() {
-  return (await client.get("/services/services")).data as Category[];
+export async function all(org_id: string) {
+  return (await client.get(`/offices/offices/${org_id}`)).data
+    .services as Category[];
 }

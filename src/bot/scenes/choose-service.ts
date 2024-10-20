@@ -29,7 +29,10 @@ scene.command(["start", "cancel"], (ctx) => {
 });
 
 scene.enter(async (ctx) => {
-  const services = await all();
+  // @ts-ignore
+  const org = ctx.session.org;
+
+  const services = await all(org);
   const keyboard = buildKeyboardFor(services);
 
   // @ts-ignore
@@ -45,6 +48,9 @@ scene.action(regex, async (ctx) => {
   const parentId = ctx.match[0].split("_")[1];
   ctx.answerCbQuery();
 
+  // @ts-ignore
+  const org = ctx.session.org;
+
   if (parentId === "back") {
     // @ts-ignore
     ctx.session.parent.pop();
@@ -56,7 +62,7 @@ scene.action(regex, async (ctx) => {
   // @ts-ignore
   const category = ctx.session.parent;
 
-  const services = await all();
+  const services = await all(org);
   let arr = services;
   let service: Category;
 

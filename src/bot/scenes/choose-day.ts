@@ -9,9 +9,11 @@ const scene = new Scenes.BaseScene(NAME);
 
 function isValidDate(dateString) {
   const date = moment(dateString, "DD.MM.YYYY", true);
-  const today = moment();
+  const yesterday = moment().subtract(1, "days");
   const futureLimit = moment().add(14, "days");
-  return date.isValid() && date.isAfter(today) && date.isBefore(futureLimit);
+  return (
+    date.isValid() && date.isAfter(yesterday) && date.isBefore(futureLimit)
+  );
 }
 
 scene.command(["start", "cancel"], (ctx) => {
